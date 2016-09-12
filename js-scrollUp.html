@@ -75,13 +75,20 @@
     con2.innerHTML = con1.innerHTML;
     area.scrollTop = 0;
     function scrollUp() {
-      if(area.scrollTop > con1.offsetHeight) {
-        area.scrollTop = 0;
-      } else {
-          area.scrollTop++;
-        }
+        if(area.scrollTop > con1.offsetHeight) {
+            area.scrollTop = 0;
+        } else {
+              area.scrollTop++;
+          }
     }
     var time = 50;
-    setInterval("scrollUp()",time);
+    var scrollHandler = setInterval("scrollUp()",time);
+	
+	area.onmouseover = function() {
+		clearInterval(scrollHandler);
+	}
+	area.onmouseout = function() {
+		scrollHandler = setInterval("scrollUp()",time);
+	}
 </script>
 </html>
