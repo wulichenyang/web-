@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自动展开</title>
+    <style type="text/css">   /*设置广告和正文的CSS样式*/
+    
+       .wrapper {
+           width: 800px;
+           margin: 0 auto;
+           text-align: center;
+       }
+       
+       .wrapper .wrapper-ad {
+           width: 0;
+		   height: 140px;
+           margin: 0 auto;
+           padding: 50px 0 10px 0;
+           background: #ddd;
+		   overflow: hidden;
+       }
+
+       .wrapper .wrapper-ad h, .wrapper .wrapper-ad p {
+           font-weight: bold;
+       }
+       
+       .wrapper .wrapper-ad h {
+           font-size: 23px;
+       }
+
+       .wrapper .wrapper-ad p {
+           font-size: 20px;
+       }
+       
+       .wrapper .wrapper-wel {
+           background: #777;
+           padding: 2px 0;
+       }
+       
+       .wrapper .wrapper-wel p {
+           color: #fff;
+       }
+       
+    </style>
+    <script type="text/javascript">
+       
+        //增加广告宽度函数
+        
+         var w = 0;
+         
+        function addAd() { 
+            if(w < 800) {
+                w += 20;
+                document.getElementsByClassName('wrapper-ad')[0].style.width = w + "px";
+            } else {
+                return;
+            }
+            setTimeout("addAd()",30);
+        } 
+        
+        //减少广告宽度函数
+        
+        function hideAd() {
+            if(w > 0) {
+                w -= 20;
+                document.getElementsByClassName('wrapper-ad')[0].style.width = w + "px";
+            } else {
+                document.getElementsByClassName('wrapper-ad')[0].style.display = "none";
+                return;
+            }
+            setTimeout("hideAd()",30);
+        } 
+        
+        //在网页加载完毕时，调用增加宽度函数，等待5秒钟后调用减少宽度函数。
+        
+        window.onload = function() { 
+            addAd();
+            setTimeout("hideAd()",5000);
+        }
+       
+    </script>
+</head>
+<body>
+    <!--广告和正文的HTML代码-->
+    <div class="wrapper">
+        <div class="wrapper-ad">
+            <h>欢迎来到慕课网</h>
+            <p>大幅广告</p>
+        </div>
+        <div class="wrapper-wel">
+            <p>慕课网欢迎你</p>
+        </div>
+    </div>
+    
+</body>
+</html>
