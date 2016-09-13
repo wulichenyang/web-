@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+* {
+	padding :0;
+	margin: 0;
+}
+#box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+	background: orange;
+    left: -200px;
+}
+
+#box #box-span {	
+	position: absolute;
+	background: red;
+	height: 50px;
+	width: 20px;
+	top: 50%;
+	left: 100%;
+	margin-top: -25px;
+}
+
+</style>
+<body>
+  <div id="box">
+      <span id="box-span"><span>
+  </div>
+</body>
+<script>
+    window.onload = function() {
+		var box = document.getElementById('box');
+		box.onmouseover = function(){
+			toggleBox(10);
+		}
+		box.onmouseout = function() {
+			toggleBox(-10);
+		}
+		
+	}
+	
+	var boxWidth = 200;
+	var handler = null;
+	
+	function toggleBox(speed) { //speed为正/反方向的速度,有正负
+		clearInterval(handler);
+		var box = document.getElementById('box');
+		if(speed > 0) {
+			handler = setInterval(function() {
+				if(box.offsetLeft >= 0) {
+					clearInterval(handler);
+				} else {
+					  box.style.left = box.offsetLeft + speed + "px";
+				  }
+			},30);
+		} else {
+			  handler = setInterval(function() {
+				  if(box.offsetLeft <= -boxWidth) {
+					  clearInterval(handler);
+			      } else {
+		                box.style.left = box.offsetLeft + speed + "px";
+				    }
+		   	  },30);
+		  }
+		
+	}
+</script>
+</html>
