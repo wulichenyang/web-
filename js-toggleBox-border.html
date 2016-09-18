@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+* {
+	padding :0;
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+ul li {
+	display: block;
+	width: 300px;
+	height: 120px;
+	background: #00deff;
+	margin-top: 10px;
+	border: 2px solid #aaa;
+}
+
+</style>
+<body>
+  <ul>
+      <li></li>
+	  <li></li>
+	  <li></li>
+  </ul>
+</body>
+<script>
+window.onload = function() {
+	var aLi = document.getElementsByTagName('li');
+	for( var i = 0 ; i < aLi.length ; i++ ) {
+		aLi[i].timer = null;
+		aLi[i].onmouseover = function() {
+			startMove(this,400);//变化后宽度设置
+		}
+		aLi[i].onmouseout = function() {
+			startMove(this,300);//变化后宽度设置
+		}
+	}
+}
+	
+function startMove(obj,toWidth) {
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function() {
+		var icur = parseInt(getStyle(obj,"width"));
+		var speed = (toWidth - icur)/8;//瞬时变化速度设置
+		speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);//速度取整
+		if(obj.offsetWidth == toWidth) {
+			clearInterval(obj.timer);
+		} else {
+		      obj.style.width = icur + speed + "px";  
+		  }
+	},30);
+}		
+
+//解除添加padding或border等引起offset的值不准的bug，获得准确值
+ function getStyle(elem,styleName) {
+        if(elem.style[styleName]) {//内联样式
+            return elem.style[styleName];
+        }
+        else if(elem.currentStyle) {//IE
+            return elem.currentStyle[styleName];
+        }
+        else if(document.defaultView && document.defaultView.getComputedStyle) {//DOM
+            styleName = styleName.replace(/([A-Z])/g,'-$1').toLowerCase();
+            var s = document.defaultView.getComputedStyle(elem,'');
+            return s&&s.getPropertyValue(styleName);
+        }
+        else {//other,for example, Safari
+            return null;
+        }
+}
+</script>
+</html>
