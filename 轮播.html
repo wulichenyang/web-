@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>轮播</title>
+</head>
+<body>
+	<div class="post-card__img" style="background-image: url('http://www.freenaturewallpapers.org/nature_wallpapers/image/Nature_Photo_Wallpaper.jpg');
+  background-repeat: no-repeat;background-size: cover;width: 850px; height: 800px; transition: all 1s">
+	
+	</div>
+	
+	<script>
+		var imgs = [
+		'http://jazztravels.com/wp-content/uploads/2015/07/313.jpg',
+		'http://kingofwallpapers.com/adventure-wallpaper/adventure-wallpaper-002.jpg',
+		'http://www.freenaturewallpapers.org/nature_wallpapers/image/Nature_Photo_Wallpaper.jpg'
+			   ];
+		var x = 0;//方法一
+		var temp;//方法二
+		
+		function changeImage() {
+		   
+		  var imgElement = document.getElementsByClassName('post-card__img');
+		  /*
+		  方法一
+		  
+		  imgElement[0].style.backgroundImage = "url('" + imgs[x] + "')";
+		  
+		  x++;
+		  
+		  if(x >= imgs.length){
+			x = 0;
+		  } 
+		  
+		  setTimeout("changeImage()", 4000);
+
+		}
+		*/	
+		//方法二 shift and push
+		  temp = imgs.shift();;
+		  imgElement[0].style.backgroundImage = "url('" + temp + "')";
+		  imgs.push(temp);
+		  
+		  setTimeout("changeImage()", 4000);
+		}
+
+		changeImage();
+	</script>
+</body>
+</html>
