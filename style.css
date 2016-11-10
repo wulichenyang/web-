@@ -1,0 +1,56 @@
+.box {
+	position: relative;
+	margin-left: 100px;
+	margin-top: 100px;
+	border-radius: 5px;
+	height: 100px;
+	width: 200px;
+	background-color: lightgray;
+	box-shadow: 1px 0px 11px gray;
+	transition: ease-out .5s;
+	display: none;
+}
+a.botton {
+	width: 75px;
+	height: 25px;
+	display: block;
+	line-height: 25px;
+	text-align: center;
+	background-color: #aaa;
+	padding: 10px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 18px;
+}
+.box:hover {
+	transition: ease-out .5s;
+	box-shadow: 1px 0px 11px #008bd6;
+}
+
+.box:after {
+	position: absolute;
+	left: 100%;
+	top: 50%;
+	margin-left: -20px;
+	margin-top: -10px;
+	content: "";
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 30px solid #fff;
+}
+
+.box:before {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-left: -30px;
+	margin-top: -10px;
+	content: "";
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 30px solid lightgray;
+}
