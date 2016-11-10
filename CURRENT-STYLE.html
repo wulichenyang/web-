@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	a {
+		background-color: #000;
+		color: #fff;
+	}
+	a:hover {
+		background-color: orange;
+	}
+	.current a {
+		background-color: orange;
+	}
+</style>
+<body>
+	<ul>
+		<li><a href="#">haha</a></li>
+		<li><a href="#">ddd</a></li>
+		<li><a href="#">fs ff</a></li>
+	</ul>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$lis = $('ul').find('li');
+			$lis.each(function(index){
+				$(this).click(function() {
+					$lis.removeClass('current');
+					$lis.eq(index).addClass('current');
+				});
+			});
+		});
+
+	</script>
+</body>
+</html>
