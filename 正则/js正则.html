@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+ <link href="name.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<p class="p1">会员注册</p>
+<div class="div1">
+  <form name="form1" class="forms" onsubmit="return f6()" >
+    手机号码：
+    <input type="text" name="number" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"  onblur="f1()" >
+    <span id="span1">*(必填)</span><br>
+    姓&nbsp &nbsp &nbsp &nbsp名：
+    <input type="text" name="name1" onblur="f2()">
+    <span id="span2">*(必填)</span><br>
+    性&nbsp &nbsp &nbsp &nbsp别：
+    <input type="radio" name="sex1" value="1">
+    汉子&nbsp &nbsp &nbsp
+    <input type="radio" name="sex1" value="0">
+    妹子<span>&nbsp &nbsp &nbsp *(不填就是人妖)</span><br>
+    帐&nbsp &nbsp &nbsp &nbsp号:
+    <input type="text" name="number1" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"  onblur="f3()" >
+    <span id="span3">*(必填)</span><br>
+    密&nbsp &nbsp &nbsp &nbsp码:
+    <input type="password" name="password1" onblur="f4()">
+    <span id="span4">*(必填)</span><br>
+    确认密码:
+    <input type="password" name="password2" onblur="f5()">
+    <span id="span5">*(必填)</span><br>
+    <br>
+    <span style="color: red;font-size: 25px">提交:&nbsp &nbsp </span>
+    <input type="button"  value="劳资填完了"   onclick="f6()">
+    <br>
+    <br>
+    <p id="p2">同志你成功了<br>
+      <span id="span6">5</span>秒后跳到斗鱼</p>
+    <script type="text/javascript">
+		    var arr=[0];
+			function f1(){
+					var x=document.forms["form1"]["number"].value;
+					var s=document.getElementById("span1");
+					if(x==""||x==null||x.substr(0,1)=="0"){
+						s.innerHTML='**逗比此项你没填啊';
+						s.className="span0";
+					}
+					else if(x.length!=11){
+						s.innerHTML='号码位数不是11位';
+                        s.className="span0";
+					}
+					else{
+                        s.innerHTML='厉害了word哥';
+                        s.className="span01";
+                        arr[0]=1;
+					}
+				}
+			function f2(){
+					var x=document.forms["form1"]["name1"].value;
+					var s=document.getElementById("span2");
+					var c=/^[\u0391-\uFFE5]+$/;
+					if(x==""||x==null){
+						s.innerHTML='**逗比此项你没填啊';
+						s.className="span0";
+					}
+					else if(!c.test(x)){
+						s.innerHTML='不是汉字';
+                        s.className="span0";
+					}
+					else{
+                        s.innerHTML='厉害了word哥';
+                        s.className="span01";
+                        arr[1]=1;
+					}
+				}
+				function f3(){
+					var x=document.forms["form1"]["number1"].value;
+					var s=document.getElementById("span3");
+					if(x==""||x==null||x.substr(0,1)=="0"){
+						s.innerHTML='**逗比此项你没填啊';
+						s.className="span0";
+					}
+					else{
+                        s.innerHTML='厉害了word哥';
+                        s.className="span01";
+                        arr[2]=1;
+					}
+				}
+				function f4(){
+					var x=document.forms["form1"]["password1"].value;
+					var s=document.getElementById("span4");
+					if(x==""||x==null){
+						s.innerHTML='**逗比此项你没填啊';
+						s.className="span0";
+					}
+					else if(x.length<=6){
+                         s.innerHTML='MDZZ 密码太短了';
+						s.className="span0";
+					}
+					else{
+                        s.innerHTML='厉害了word哥';
+                        s.className="span01";
+                        arr[3]=1;
+					}
+				}
+				function f5(){
+					var x=document.forms["form1"]["password1"].value;
+                    var y=document.forms["form1"]["password2"].value;
+					var s=document.getElementById("span5");
+					if(x!=y){
+						s.innerHTML='**ＭＤＺＺ密码不一样';
+						s.className="span0";
+					}
+					else{
+                        s.innerHTML='厉害了word哥';
+                        s.className="span01";
+                        arr[4]=1;
+					}
+				}
+				var i=5;
+				function f6(){
+                  if(arr[0]+arr[1]+arr[2]+arr[3]+arr[4]!=5){alert("骚年你少填了啥东西吧");return false;}
+                  else{
+                           document.getElementById("p2").style.display="block";
+                          	if(i==0){
+                          		location.href='http:www.douyu.com';
+                          	}
+                          	document.getElementById('span6').innerHTML=i--;
+                          	setTimeout("f6()",1000);
+                          }
+                    }			
+		</script>
+  </form>
+</div>
+</body>
+</html>
