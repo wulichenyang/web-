@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="slider">
+    <ul>
+      <li>
+        <img src="http://img2.3lian.com/2014/c7/24/d/44.jpg" alt="">
+      </li>
+      <li>
+        <img src="http://img2.3lian.com/2014/c7/27/d/48.jpg" alt="">
+      </li>
+      <li>
+        <img src="http://img2.3lian.com/2014/c7/27/d/54.jpg" alt="">
+      </li>
+      <li>
+        <img src="http://img2.3lian.com/2014/c7/24/d/44.jpg" alt="">
+      </li>
+    </ul>
+  </div>
+  <script>
+    
+  </script>
+</body>
+<style>
+  body {
+    margin: 0;
+  }
+  .slider {
+    width: 100%;
+    overflow: hidden;
+  }
+  @keyframes slider {
+    0% {
+      left: 0%;
+    }
+    28% {
+      left: 0%;
+    }
+    33% {
+      left: -100%;
+    }
+    61% {
+      left: -100%;
+    }
+    66% {
+      left: -200%;
+    }
+    94% {
+      left: -200%;
+    }
+    100% {
+      left: -300%;
+    }
+  }
+  ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 400%;
+    list-style-type: none;
+    animation: 24s slider infinite ease;
+  }
+  li {
+    width: 25%;
+    height: 100vh;
+    float: left;
+  }
+  img {
+    width: 100%;
+  }
+</style>
+</html>
